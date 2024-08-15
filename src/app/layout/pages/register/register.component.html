@@ -2,23 +2,30 @@
     <div class="container">
         <h1 class="h4">Register Now :</h1>
         <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+
+            @if (errMsg) {
+            <div class="alert alert-danger m-0 p-0">
+                <p class="p-2 m-0">{{errMsg}}</p>
+            </div>
+            }
+
             <div class="name mt-2">
                 <label for="name">name :</label>
                 <input formControlName="name" class="form-control" type="text" name="name">
 
                 <!-- validation  -->
                 @if (registerForm.get('name')?.errors && registerForm.get('name')?.touched) {
-                    <div class="alert alert-danger p-0 m-0">
-                        @if (registerForm.get('name')?.errors?.['required']) {
-                            <p class="p-1 m-0"> name is required </p>
-                        }
-                        @else if (registerForm.get('name')?.errors?.['minlength']) {
-                            <p class="p-1 m-0"> name min length is : 3 </p>
-                        }
-                        @else if (registerForm.get('name')?.errors?.['maxlength']) {
-                            <p class="p-1 m-0"> name max length is : 8 </p>
-                        }
-                    </div>
+                <div class="alert alert-danger p-0 m-0">
+                    @if (registerForm.get('name')?.errors?.['required']) {
+                    <p class="p-1 m-0"> name is required </p>
+                    }
+                    @else if (registerForm.get('name')?.errors?.['minlength']) {
+                    <p class="p-1 m-0"> name min length is : 3 </p>
+                    }
+                    @else if (registerForm.get('name')?.errors?.['maxlength']) {
+                    <p class="p-1 m-0"> name max length is : 8 </p>
+                    }
+                </div>
                 }
             </div>
             <div class="email mt-2">
@@ -27,41 +34,41 @@
 
                 <!-- validation  -->
                 @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched) {
-                    <div class="alert alert-danger p-0 m-0">
-                        @if (registerForm.get('email')?.errors?.['required']) {
-                            <p class="p-1 m-0"> email is required </p>
-                        }
-                        @else if (registerForm.get('email')?.errors?.['email']) {
-                            <p class="p-1 m-0"> Enter a valid email, e.g., ahmed&#64;gmail.com </p>
-                        }
-                    </div>
+                <div class="alert alert-danger p-0 m-0">
+                    @if (registerForm.get('email')?.errors?.['required']) {
+                    <p class="p-1 m-0"> email is required </p>
+                    }
+                    @else if (registerForm.get('email')?.errors?.['email']) {
+                    <p class="p-1 m-0"> Enter a valid email, e.g., ahmed&#64;gmail.com </p>
+                    }
+                </div>
                 }
             </div>
             <div class="password mt-2">
                 <label for="password">password :</label>
                 <input formControlName="password" class="form-control" type="password" name="password">
-                
+
                 <!-- validation  -->
                 @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched) {
-                    <div class="alert alert-danger p-0 m-0">
-                        @if (registerForm.get('password')?.errors?.['required']) {
-                            <p class="p-1 m-0"> password is required </p>
-                        }
-                        @else if (registerForm.get('password')?.errors?.['pattern']) {
-                            <p class="p-1 m-0"> enter valid password : 
-                                <br>
-                                1-At least 8 characters long.
-                                <br>
-                                2-Contains at least one uppercase letter.
-                                <br>
-                                3-Contains at least one lowercase letter.
-                                <br>
-                                4-Contains at least one digit.
-                                <br>
-                                5-Contains at least one special character.
-                            </p>
-                        }
-                    </div>
+                <div class="alert alert-danger p-0 m-0">
+                    @if (registerForm.get('password')?.errors?.['required']) {
+                    <p class="p-1 m-0"> password is required </p>
+                    }
+                    @else if (registerForm.get('password')?.errors?.['pattern']) {
+                    <p class="p-1 m-0"> enter valid password :
+                        <br>
+                        1-At least 8 characters long.
+                        <br>
+                        2-Contains at least one uppercase letter.
+                        <br>
+                        3-Contains at least one lowercase letter.
+                        <br>
+                        4-Contains at least one digit.
+                        <br>
+                        5-Contains at least one special character.
+                    </p>
+                    }
+                </div>
                 }
             </div>
             <div class="rePassword mt-2">
@@ -70,14 +77,14 @@
 
                 <!-- validation  -->
                 @if (registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched) {
-                    <div class="alert alert-danger p-0 m-0">
-                        @if (registerForm.get('rePassword')?.errors?.['required']) {
-                            <p class="p-1 m-0"> rePassword is required </p>
-                        }
-                        @else if (registerForm.get('rePassword')?.errors?.['mismatch']) {
-                            <p class="p-1 m-0"> rePassword not match password </p>
-                        }
-                    </div>
+                <div class="alert alert-danger p-0 m-0">
+                    @if (registerForm.get('rePassword')?.errors?.['required']) {
+                    <p class="p-1 m-0"> rePassword is required </p>
+                    }
+                    @else if (registerForm.get('rePassword')?.errors?.['mismatch']) {
+                    <p class="p-1 m-0"> rePassword not match password </p>
+                    }
+                </div>
                 }
             </div>
             <div class="phone mt-2">
@@ -86,14 +93,14 @@
 
                 <!-- validation  -->
                 @if (registerForm.get('phone')?.errors && registerForm.get('phone')?.touched) {
-                    <div class="alert alert-danger p-0 m-0">
-                        @if (registerForm.get('phone')?.errors?.['required']) {
-                            <p class="p-1 m-0"> phone is required </p>
-                        }
-                        @else if (registerForm.get('phone')?.errors?.['pattern']) {
-                            <p class="p-1 m-0"> enter valid egyptian phone number </p>
-                        }
-                    </div>
+                <div class="alert alert-danger p-0 m-0">
+                    @if (registerForm.get('phone')?.errors?.['required']) {
+                    <p class="p-1 m-0"> phone is required </p>
+                    }
+                    @else if (registerForm.get('phone')?.errors?.['pattern']) {
+                    <p class="p-1 m-0"> enter valid egyptian phone number </p>
+                    }
+                </div>
                 }
             </div>
 
