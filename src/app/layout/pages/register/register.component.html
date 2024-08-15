@@ -104,7 +104,14 @@
                 }
             </div>
 
-            <button [disabled]="registerForm.invalid" class="btn-main ms-auto d-block mt-2">Register</button>
+            <button [disabled]="registerForm.invalid" class="btn-main ms-auto d-block mt-2">
+                @if (isLoading) {
+                <span><i class="fa fa-spin fa-spinner"></i></span>
+                }
+                @else {
+                <span>Register</span>
+                }
+            </button>
         </form>
     </div>
 </div>

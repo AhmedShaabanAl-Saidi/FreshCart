@@ -1,1 +1,50 @@
-<p>login works!</p>
+<div class="login_form w-75 mx-auto py-5 text-capitalize">
+    <div class="container">
+        <h1 class="h4">Login :</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+
+            @if (errMsg) {
+            <div class="alert alert-danger m-0 p-0">
+                <p class="p-2 m-0">{{errMsg}}</p>
+            </div>
+            }
+
+            <div class="email mt-2">
+                <label for="email">email :</label>
+                <input formControlName="email" class="form-control" type="email" name="email">
+
+                <!-- validation  -->
+                @if (loginForm.get('email')?.errors && loginForm.get('email')?.touched) {
+                <div class="alert alert-danger p-0 m-0">
+                    @if (loginForm.get('email')?.errors?.['required']) {
+                    <p class="p-1 m-0"> email is required </p>
+                    }
+                </div>
+                }
+            </div>
+
+            <div class="password mt-2">
+                <label for="password">password :</label>
+                <input formControlName="password" class="form-control" type="password" name="password">
+
+                <!-- validation  -->
+                @if (loginForm.get('password')?.errors && loginForm.get('password')?.touched) {
+                <div class="alert alert-danger p-0 m-0">
+                    @if (loginForm.get('password')?.errors?.['required']) {
+                    <p class="p-1 m-0"> password is required </p>
+                    }
+                </div>
+                }
+            </div>
+
+            <button [disabled]="loginForm.invalid" class="btn-main ms-auto d-block mt-2">
+                @if (isLoading) {
+                <span><i class="fa fa-spin fa-spinner"></i></span>
+                }
+                @else {
+                <span>Login</span>
+                }
+            </button>
+        </form>
+    </div>
+</div>

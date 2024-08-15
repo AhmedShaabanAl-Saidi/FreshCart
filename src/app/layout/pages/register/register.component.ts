@@ -7,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth/auth.service';
-import { log } from 'console';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,6 +18,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   errMsg!: string;
+  isLoading: boolean = false;
 
   registerForm: FormGroup = new FormGroup(
     {
@@ -57,15 +57,18 @@ export class RegisterComponent {
   submitRegister() {
     if (this.registerForm.valid) {
       // connect api
+      this.isLoading = true;
       this._AuthService.signUp(this.registerForm.value).subscribe({
         next: (res) => {
           // console.log(res);
           // navigate home , login >> pro routing
+          this.isLoading = false;
           this._Router.navigate(['/login']);
         },
         error: (err) => {
           // console.log(err);
-          this.errMsg = err.error.message
+          this.isLoading = false;
+          this.errMsg = err.error.message;
         },
       });
     }
