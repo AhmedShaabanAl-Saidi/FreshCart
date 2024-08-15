@@ -12,7 +12,7 @@ import { FailResponse } from '../../interfaces/fail-response';
 export class AuthService {
  constructor(private _HttpClient: HttpClient) {}
 
- signUp(data: registerData):Observable<any> {
-   return this._HttpClient.post(`${Environment.baseUrl}/api/v1/auth/signup`, data);
+ signUp(data: registerData):Observable<SuccessResponse|FailResponse> {
+   return this._HttpClient.post<SuccessResponse|FailResponse>(`${Environment.baseUrl}/api/v1/auth/signup`, data);
  }
 }

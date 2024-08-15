@@ -9,4 +9,3 @@ interface User {
   email: string;
   role: string;
 }
-
