@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { logInData, registerData } from '../../interfaces/data';
 import { Environment } from '../../../base/Enviroment';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -8,6 +8,7 @@ import { FailResponse } from '../../interfaces/fail-response';
 import { jwtDecode } from 'jwt-decode';
 import { userDataDecoded } from '../../interfaces/userDataDecoded';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 @Injectable({
   providedIn: 'root',
 })
@@ -22,7 +23,18 @@ export class AuthService {
   userData: BehaviorSubject<userDataDecoded | null> =
     new BehaviorSubject<userDataDecoded | null>(null);
 
-  constructor(private _HttpClient: HttpClient, private _Router: Router) {}
+  constructor(
+    private _HttpClient: HttpClient,
+    private _Router: Router,
+    @Inject(PLATFORM_ID) id: object
+  ) {
+    if (isPlatformBrowser(id)) {
+      if (localStorage.getItem('userToken')) {
+        this.deCodeUserData();
+        _Router.navigate([localStorage.getItem('currentPage')]);
+      }
+    }
+  }
 
   signUp(data: registerData): Observable<SuccessResponse | FailResponse> {
     return this._HttpClient.post<SuccessResponse | FailResponse>(

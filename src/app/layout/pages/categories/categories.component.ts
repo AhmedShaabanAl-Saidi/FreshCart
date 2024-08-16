@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-categories',
@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })
-export class CategoriesComponent {
-
+export class CategoriesComponent implements OnInit{
+  ngOnInit(): void {
+    if (typeof localStorage != 'undefined') {
+      localStorage.setItem('currentPage', '/categories');
+    }
+  }
 }
