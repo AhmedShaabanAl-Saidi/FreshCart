@@ -1,4 +1,4 @@
-<div class="login_form w-75 mx-auto py-5 text-capitalize">
+<div class="login_form w-75 mx-auto py-5 text-capitalize mb-5">
     <div class="container">
         <h1 class="h4">Login :</h1>
         <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
@@ -37,7 +37,7 @@
                 }
             </div>
 
-            <button [disabled]="loginForm.invalid" class="btn-main ms-auto d-block mt-2">
+            <button [disabled]="loginForm.invalid" class="btn-main ms-auto d-block mt-2 mb-5">
                 @if (isLoading) {
                 <span><i class="fa fa-spin fa-spinner"></i></span>
                 }

@@ -9,6 +9,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            @if (isLogin == true) {
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="home" routerLinkActive="bg-main text-white rounded-3">Home</a>
@@ -28,8 +29,9 @@
                     <a class="nav-link" routerLink="brands" routerLinkActive="bg-main text-white rounded-3">Brands</a>
                 </li>
             </ul>
+            }
 
-            <div class="links d-flex align-items-center justify-content-center gap-4">
+            <div class="links d-flex align-items-center justify-content-center gap-4 ms-auto">
                 <div class="icons d-flex align-items-center justify-content-center gap-3">
                     <a target="_blank" href="https://www.instagram.com/">
                         <i class="fa-brands fa-instagram"></i>
@@ -49,12 +51,16 @@
                     <a target="_blank" href="https://www.youtube.com/">
                         <i class="fa-brands fa-youtube"></i>
                     </a>
-                </div>
 
-                <div class="status d-flex justify-content-center align-items-center gap-3">
-                    <a class="nav-link" routerLink="register" routerLinkActive="text-main">Register</a>
-                    <a class="nav-link" routerLink="login" routerLinkActive="text-main">Login</a>
-                    <a class="nav-link" routerLinkActive="text-main">Logout</a>
+                    <div class="status d-flex justify-content-center align-items-center gap-3">
+                        @if (isLogin == false) {
+                        <a class="nav-link" routerLink="login" routerLinkActive="text-main">Login</a>
+                        <a class="nav-link" routerLink="register" routerLinkActive="text-main">Register</a>
+                        }
+                        @else {
+                        <a (click)="_AuthService.logOut()" class="nav-link" routerLinkActive="text-main">Logout</a>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

@@ -30,6 +30,10 @@ export class LoginComponent {
       this.isLoading = true;
       this._AuthService.signIn(this.loginForm.value).subscribe({
         next: (res) => {
+          if ('token' in res) {
+            localStorage.setItem('userToken', res.token);
+            this._AuthService.deCodeUserData();
+          }
           this.isLoading = false;
           this._Router.navigate(['/home']);
         },
