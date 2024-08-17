@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --main-color: #0aad0a;
   --light-color: #f0f3f2;
@@ -29,11 +33,6 @@ body {
 }
 .cursor-pointer {
   cursor: pointer;
-}
-a,
-a:hover {
-  color: black;
-  text-decoration: none;
 }
 
 .product {
@@ -81,5 +80,11 @@ a:hover {
 
 .form-control:focus {
   border-color: #0aad0a;
-  box-shadow:0 0 0 .25rem rgba(10, 173, 10,.25)
+  box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25);
+}
+
+.alert-danger{
+  @apply bg-red-400 text-white rounded p-0 m-0
+  bg-red-400 text-white rounded p-0 m-0
+  bg-red-400 text-white rounded p-0 m-0
 }

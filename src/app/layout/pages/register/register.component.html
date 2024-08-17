@@ -1,21 +1,21 @@
-<div class="register-form w-75 mx-auto py-5 text-capitalize">
-    <div class="container">
-        <h1 class="h4">Register Now :</h1>
+<div class="register-form w-3/4 mx-auto py-5 capitalize">
+    <div class="container mx-auto">
+        <h1 class="text-xl font-semibold my-2">Register Now :</h1>
         <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
 
             @if (errMsg) {
-            <div class="alert alert-danger m-0 p-0">
+            <div class="alert-danger">
                 <p class="p-2 m-0">{{errMsg}}</p>
             </div>
             }
 
             <div class="name mt-2">
                 <label for="name">name :</label>
-                <input formControlName="name" class="form-control" type="text" name="name">
+                <input formControlName="name" class="form-control border border-gray-300 rounded p-2 w-full" type="text" name="name">
 
                 <!-- validation  -->
                 @if (registerForm.get('name')?.errors && registerForm.get('name')?.touched) {
-                <div class="alert alert-danger p-0 m-0">
+                <div class="alert-danger">
                     @if (registerForm.get('name')?.errors?.['required']) {
                     <p class="p-1 m-0"> name is required </p>
                     }
@@ -28,13 +28,14 @@
                 </div>
                 }
             </div>
+
             <div class="email mt-2">
                 <label for="email">email :</label>
-                <input formControlName="email" class="form-control" type="email" name="email">
+                <input formControlName="email" class="form-control border border-gray-300 rounded p-2 w-full" type="email" name="email">
 
                 <!-- validation  -->
                 @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched) {
-                <div class="alert alert-danger p-0 m-0">
+                <div class="alert-danger">
                     @if (registerForm.get('email')?.errors?.['required']) {
                     <p class="p-1 m-0"> email is required </p>
                     }
@@ -44,13 +45,14 @@
                 </div>
                 }
             </div>
+
             <div class="password mt-2">
                 <label for="password">password :</label>
-                <input formControlName="password" class="form-control" type="password" name="password">
+                <input formControlName="password" class="form-control border border-gray-300 rounded p-2 w-full" type="password" name="password">
 
                 <!-- validation  -->
                 @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched) {
-                <div class="alert alert-danger p-0 m-0">
+                <div class="alert-danger">
                     @if (registerForm.get('password')?.errors?.['required']) {
                     <p class="p-1 m-0"> password is required </p>
                     }
@@ -71,13 +73,14 @@
                 </div>
                 }
             </div>
+
             <div class="rePassword mt-2">
                 <label for="repassword">rePassword :</label>
-                <input formControlName="rePassword" class="form-control" type="password" name="rePassword">
+                <input formControlName="rePassword" class="form-control border border-gray-300 rounded p-2 w-full" type="password" name="rePassword">
 
                 <!-- validation  -->
                 @if (registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched) {
-                <div class="alert alert-danger p-0 m-0">
+                <div class="alert-danger">
                     @if (registerForm.get('rePassword')?.errors?.['required']) {
                     <p class="p-1 m-0"> rePassword is required </p>
                     }
@@ -87,13 +90,14 @@
                 </div>
                 }
             </div>
+
             <div class="phone mt-2">
                 <label for="phone">phone :</label>
-                <input formControlName="phone" class="form-control" type="tel" name="phone">
+                <input formControlName="phone" class="border border-gray-300 rounded p-2 w-full" type="tel" name="phone">
 
                 <!-- validation  -->
                 @if (registerForm.get('phone')?.errors && registerForm.get('phone')?.touched) {
-                <div class="alert alert-danger p-0 m-0">
+                <div class="alert-danger">
                     @if (registerForm.get('phone')?.errors?.['required']) {
                     <p class="p-1 m-0"> phone is required </p>
                     }
@@ -104,7 +108,7 @@
                 }
             </div>
 
-            <button [disabled]="registerForm.invalid" class="btn-main ms-auto d-block mt-2">
+            <button [disabled]="registerForm.invalid" class="btn-main ms-auto block mt-2 mb-5">
                 @if (isLoading) {
                 <span><i class="fa fa-spin fa-spinner"></i></span>
                 }
