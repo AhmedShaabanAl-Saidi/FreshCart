@@ -9,15 +9,15 @@ export interface FailResponse {
   error: Error;
 }
 
-interface Error {
+export interface Error {
   statusMsg: string;
   message: string;
 }
 
-interface Headers {
+export interface Headers {
   normalizedNames: NormalizedNames;
   lazyUpdate: null;
 }
 
-interface NormalizedNames {
+export interface NormalizedNames {
 }
