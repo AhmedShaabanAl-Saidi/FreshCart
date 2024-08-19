@@ -12,14 +12,21 @@ import { FlowbiteService } from '../../../shared/services/flowbite/flowbite.serv
 })
 export class NavbarComponent implements OnInit {
   isLogin: boolean = false;
-
+  userName!: string | null;
+  userState!: string | null;
+  
   constructor(public _AuthService: AuthService,private _FlowbiteService:FlowbiteService) {}
 
   ngOnInit(): void {
 
+    if (typeof localStorage !== 'undefined') {
+      this.userName = localStorage.getItem('userName');
+      this.userState = localStorage.getItem('userState');
+    }
+
     this._FlowbiteService.loadFlowbite(flowbite => {
       // Your custom code here
-      console.log('Flowbite loaded', flowbite);
+      // console.log('Flowbite loaded', flowbite);
     });
 
     this._AuthService.userData.subscribe(() => {

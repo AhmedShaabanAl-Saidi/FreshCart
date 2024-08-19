@@ -93,7 +93,7 @@
 
             <div class="phone mt-2">
                 <label for="phone">phone :</label>
-                <input formControlName="phone" class="border border-gray-300 rounded p-2 w-full" type="tel" name="phone">
+                <input formControlName="phone" class="form-control border border-gray-300 rounded p-2 w-full" type="tel" name="phone">
 
                 <!-- validation  -->
                 @if (registerForm.get('phone')?.errors && registerForm.get('phone')?.touched) {
