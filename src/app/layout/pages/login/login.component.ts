@@ -34,7 +34,7 @@ export class LoginComponent {
           
           if ('user' in res) {
             localStorage.setItem('userName', res.user?.name);
-            localStorage.setItem('userState', res.user?.role);
+            localStorage.setItem('userStatus', res.user?.role);
             localStorage.setItem('userEmail', res.user?.email);
         }
           

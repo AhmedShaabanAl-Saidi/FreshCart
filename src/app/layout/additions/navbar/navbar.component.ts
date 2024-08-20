@@ -13,7 +13,7 @@ import { FlowbiteService } from '../../../shared/services/flowbite/flowbite.serv
 export class NavbarComponent implements OnInit {
   isLogin: boolean = false;
   userName!: string | null;
-  userState!: string | null;
+  userStatus!: string | null;
   userEmail!: string | null;
   
   constructor(public _AuthService: AuthService,private _FlowbiteService:FlowbiteService) {}
@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
 
     if (typeof localStorage !== 'undefined') {
       this.userName = localStorage.getItem('userName');
-      this.userState = localStorage.getItem('userState');
+      this.userStatus = localStorage.getItem('userState');
       this.userEmail = localStorage.getItem('userEmail');
     }
 
