@@ -17,10 +17,18 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 export class ForgetpasswordComponent {
   isLoading: boolean = false;
   errMsg!: string;
-  successMsg!: string;
+  emailFormFlag: boolean = true;
+  codeFormFlag: boolean = false;
 
   emailForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
+  });
+
+  codeForm: FormGroup = new FormGroup({
+    resetCode: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(/^[0-9]{4,}$/),
+    ]),
   });
 
   constructor(private _AuthService: AuthService) {}
@@ -32,7 +40,25 @@ export class ForgetpasswordComponent {
         next: (res) => {
           console.log(res);
           this.isLoading = false;
-          this.successMsg = res.message;
+          this.emailFormFlag = false;
+          this.codeFormFlag = true;
+        },
+        error: (err) => {
+          console.log(err);
+          this.isLoading = false;
+          this.errMsg = err.error.message;
+        },
+      });
+    }
+  }
+
+  submitCodeForm() {
+    if (this.codeForm.valid) {
+      this.isLoading = true;
+      this._AuthService.verifyResetCode(this.codeForm.value).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.isLoading = false;
         },
         error: (err) => {
           console.log(err);

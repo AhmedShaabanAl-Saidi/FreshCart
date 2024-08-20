@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { email, logInData, registerData } from '../../interfaces/data';
+import { code, email, logInData, registerData } from '../../interfaces/data';
 import { Environment } from '../../../base/Enviroment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SuccessResponse } from '../../interfaces/success-response';
@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { FailEmail } from '../../interfaces/fail-email';
 import { SuccessEmail } from '../../interfaces/success-email';
+import { FailCode } from '../../interfaces/fail-code';
+import { SuccessCode } from '../../interfaces/success-code';
 @Injectable({
   providedIn: 'root',
 })
@@ -58,6 +60,14 @@ export class AuthService {
       data
     );
   }
+
+  verifyResetCode(data: code): Observable<SuccessCode|FailCode> {
+    return this._HttpClient.post<SuccessCode|FailCode>(
+      `${Environment.baseUrl}/api/v1/auth/verifyResetCode`,
+      data
+    );
+  }
+
 
   deCodeUserData() {
     // decode token

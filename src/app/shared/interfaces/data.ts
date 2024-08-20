@@ -2,6 +2,10 @@ export interface email {
   email: string;
 }
 
+export interface code {
+  resetCode: string;
+}
+
 export interface registerData extends logInData, email {
   name: string;
   rePassword: string;
