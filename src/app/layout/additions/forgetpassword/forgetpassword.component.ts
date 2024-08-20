@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgetpassword',
@@ -19,6 +20,7 @@ export class ForgetpasswordComponent {
   errMsg!: string;
   emailFormFlag: boolean = true;
   codeFormFlag: boolean = false;
+  newPasswordFormFlag: boolean = false;
 
   emailForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
@@ -31,20 +33,30 @@ export class ForgetpasswordComponent {
     ]),
   });
 
-  constructor(private _AuthService: AuthService) {}
+  newPasswordForm: FormGroup = new FormGroup({
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    newPassword: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/
+      ),
+    ]),
+  });
+
+  constructor(private _AuthService: AuthService, private _Router: Router) {}
 
   submitEmailForm() {
     if (this.emailForm.valid) {
       this.isLoading = true;
       this._AuthService.forgetPassword(this.emailForm.value).subscribe({
         next: (res) => {
-          console.log(res);
+          // console.log(res);
           this.isLoading = false;
           this.emailFormFlag = false;
           this.codeFormFlag = true;
         },
         error: (err) => {
-          console.log(err);
+          // console.log(err);
           this.isLoading = false;
           this.errMsg = err.error.message;
         },
@@ -57,11 +69,35 @@ export class ForgetpasswordComponent {
       this.isLoading = true;
       this._AuthService.verifyResetCode(this.codeForm.value).subscribe({
         next: (res) => {
-          console.log(res);
+          // console.log(res);
           this.isLoading = false;
+          this.codeFormFlag = false;
+          this.newPasswordFormFlag = true;
         },
         error: (err) => {
-          console.log(err);
+          // console.log(err);
+          this.isLoading = false;
+          this.errMsg = err.error.message;
+        },
+      });
+    }
+  }
+
+  submitNewPasswordForm() {
+    if (this.codeForm.valid) {
+      this.isLoading = true;
+      this._AuthService.resetNewPassword(this.newPasswordForm.value).subscribe({
+        next: (res) => {
+          // console.log(res);
+          this.isLoading = false;
+          if ('token' in res) {
+            localStorage.setItem('userToken', res.token);
+            this._AuthService.deCodeUserData();
+            this._Router.navigate(['/home']);
+          }
+        },
+        error: (err) => {
+          // console.log(err);
           this.isLoading = false;
           this.errMsg = err.error.message;
         },
