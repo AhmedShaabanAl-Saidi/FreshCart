@@ -56,7 +56,7 @@ export class AuthService {
     const decoded = jwtDecode(token);
     this.userData.next(decoded);
 
-    console.log(this.userData.getValue());
+    // console.log(this.userData.getValue());
   }
 
   logOut() {

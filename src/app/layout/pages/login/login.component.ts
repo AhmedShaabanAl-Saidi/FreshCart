@@ -30,6 +30,14 @@ export class LoginComponent {
       this.isLoading = true;
       this._AuthService.signIn(this.loginForm.value).subscribe({
         next: (res) => {
+          console.log(res);
+          
+          if ('user' in res) {
+            localStorage.setItem('userName', res.user?.name);
+            localStorage.setItem('userState', res.user?.role);
+            localStorage.setItem('userEmail', res.user?.email);
+        }
+          
           if ('token' in res) {
             localStorage.setItem('userToken', res.token);
             this._AuthService.deCodeUserData();

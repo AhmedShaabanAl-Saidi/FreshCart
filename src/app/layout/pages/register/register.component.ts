@@ -60,10 +60,6 @@ export class RegisterComponent {
       this.isLoading = true;
       this._AuthService.signUp(this.registerForm.value).subscribe({
         next: (res) => {
-          if ('user' in res) {
-            localStorage.setItem('userName', res.user?.name);
-            localStorage.setItem('userState', res.user?.role);
-        }
           // console.log(res);
           // navigate home , login >> pro routing
           this.isLoading = false;

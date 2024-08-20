@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   isLogin: boolean = false;
   userName!: string | null;
   userState!: string | null;
+  userEmail!: string | null;
   
   constructor(public _AuthService: AuthService,private _FlowbiteService:FlowbiteService) {}
 
@@ -22,6 +23,7 @@ export class NavbarComponent implements OnInit {
     if (typeof localStorage !== 'undefined') {
       this.userName = localStorage.getItem('userName');
       this.userState = localStorage.getItem('userState');
+      this.userEmail = localStorage.getItem('userEmail');
     }
 
     this._FlowbiteService.loadFlowbite(flowbite => {

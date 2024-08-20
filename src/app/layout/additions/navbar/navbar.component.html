@@ -20,7 +20,8 @@
                 id="user-dropdown">
                 <div class="px-4 py-3">
                     @if (isLogin == true) {
-                    <span class="block text-sm text-gray-900 dark:text-white">{{userName}}</span>
+                    <span class="block text-sm text-gray-900 dark:text-white font-semibold">{{userName}}</span>
+                    <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{userEmail}}</span>
                     <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{userState}}</span>
                     }
                 </div>
