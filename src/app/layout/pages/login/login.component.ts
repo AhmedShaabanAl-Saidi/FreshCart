@@ -6,11 +6,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -19,7 +19,7 @@ export class LoginComponent {
   isLoading: boolean = false;
 
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl(null, [Validators.required]),
+    email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required]),
   });
 

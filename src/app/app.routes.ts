@@ -8,6 +8,7 @@ import { LoginComponent } from './layout/pages/login/login.component';
 import { RegisterComponent } from './layout/pages/register/register.component';
 import { NotfoundComponent } from './layout/additions/notfound/notfound.component';
 import { authGuard } from './shared/guards/auth.guard';
+import { ForgetpasswordComponent } from './layout/additions/forgetpassword/forgetpassword.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,5 +19,6 @@ export const routes: Routes = [
   { path: 'categories', component: CategoriesComponent ,canActivate :[authGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'forgetpassword', component: ForgetpasswordComponent },
   { path: '**', component: NotfoundComponent },
 ];

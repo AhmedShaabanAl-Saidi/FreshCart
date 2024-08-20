@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { logInData, registerData } from '../../interfaces/data';
+import { email, logInData, registerData } from '../../interfaces/data';
 import { Environment } from '../../../base/Enviroment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SuccessResponse } from '../../interfaces/success-response';
@@ -9,6 +9,8 @@ import { jwtDecode } from 'jwt-decode';
 import { userDataDecoded } from '../../interfaces/userDataDecoded';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
+import { FailEmail } from '../../interfaces/fail-email';
+import { SuccessEmail } from '../../interfaces/success-email';
 @Injectable({
   providedIn: 'root',
 })
@@ -46,6 +48,13 @@ export class AuthService {
   signIn(data: logInData): Observable<SuccessResponse | FailResponse> {
     return this._HttpClient.post<SuccessResponse | FailResponse>(
       `${Environment.baseUrl}/api/v1/auth/signin`,
+      data
+    );
+  }
+
+  forgetPassword(data: email): Observable<SuccessEmail|FailEmail> {
+    return this._HttpClient.post<SuccessEmail|FailEmail>(
+      `${Environment.baseUrl}/api/v1/auth/forgotPasswords`,
       data
     );
   }
