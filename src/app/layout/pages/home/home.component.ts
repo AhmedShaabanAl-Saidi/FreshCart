@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../shared/services/product/product.service';
 import { product } from '../../../shared/interfaces/product';
 import { CategorysliderComponent } from '../../additions/categoryslider/categoryslider.component';
+import { HomesliderComponent } from '../../additions/homeslider/homeslider.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CategorysliderComponent],
+  imports: [CategorysliderComponent,HomesliderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
