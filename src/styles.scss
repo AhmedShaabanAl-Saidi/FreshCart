@@ -86,3 +86,18 @@ body {
 .alert-danger {
   @apply bg-red-400 text-white rounded p-0 m-0;
 }
+
+.row {
+  @apply flex flex-wrap;
+}
+
+// .product button {
+//   transform: translateY(100%);
+//   opacity: 0;
+//   transition: all 0.5s;
+// }
+
+// .product:hover button {
+//   opacity: 1;
+//   transform: translateY(0%);
+// }
