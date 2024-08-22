@@ -1,3 +1,6 @@
+<h2 class="my-3 text-xl font-medium">Popular Categories</h2>
+<app-categoryslider></app-categoryslider>
+
 @if (isLoading) {
 <div class="h-screen row justify-center items-center">
     <div class="loader"></div>
@@ -6,7 +9,7 @@
 <div class="home-page text-capitalize">
     <div class="row">
         @for (product of productList; track $index) {
-        <div class="md:w-2/12 p-3">
+        <div class="sm:w-6/12 md:w-4/12 lg:w-2/12 p-3">
             <div class="product p-2">
                 <img [src]="product.imageCover" [alt]="product.category.name">
                 <span class="text-main font-sm">{{product.category.name}}</span>
