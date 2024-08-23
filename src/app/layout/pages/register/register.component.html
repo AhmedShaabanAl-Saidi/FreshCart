@@ -1,4 +1,4 @@
-<div class="register-form w-3/4 mx-auto py-5 capitalize">
+<div class="register-form md:w-3/4 mx-auto py-5 capitalize">
     <div class="container mx-auto">
         <h1 class="text-xl font-semibold my-2">Register Now :</h1>
         <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
@@ -108,7 +108,7 @@
                 }
             </div>
 
-            <button [disabled]="registerForm.invalid" class="btn-main ms-auto block mt-2 mb-5">
+            <button [disabled]="registerForm.invalid" class="btn-main ms-auto block mt-2 mb-20">
                 @if (isLoading) {
                 <span><i class="fa fa-spin fa-spinner"></i></span>
                 }

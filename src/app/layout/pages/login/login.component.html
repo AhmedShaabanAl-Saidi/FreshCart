@@ -1,4 +1,4 @@
-<div class="login_form w-3/4 mx-auto py-20 mb-20 capitalize">
+<div class="login_form md:w-3/4 mx-auto py-20 mb-20 capitalize">
     <div class="container mx-auto">
         <h1 class="text-xl font-semibold my-2">Login :</h1>
         <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
@@ -42,7 +42,7 @@
                 }
             </div>
 
-            <div class="flex items-center justify-end mt-2 mb-5 gap-3">
+            <div class="flex items-center justify-end mt-2 mb-28 gap-3">
                 <a routerLink="/forgetpassword" class="text-blue-500 underline cursor-pointer">forget password</a>
 
                 <button [disabled]="loginForm.invalid" class="btn-main">
