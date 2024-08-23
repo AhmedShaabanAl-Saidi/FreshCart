@@ -9,6 +9,7 @@
         "fortawesome",
         "homeslider",
         "imgs",
-        "signin"
+        "signin",
+        "tailwindcss"
     ]
 }
