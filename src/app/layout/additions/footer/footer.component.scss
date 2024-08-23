@@ -1,1 +1,9 @@
+.pay-details h3{
+    font-size: 1rem;
+}
 
+@media (min-width: 768px) {
+    .pay-details h3{
+        font-size: 1.5rem;
+    }
+}

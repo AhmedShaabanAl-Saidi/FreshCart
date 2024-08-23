@@ -1,4 +1,19 @@
 img{
-    height: 12.5rem;
+    height: 6.25rem;
     object-fit: cover;
+}
+
+owl-carousel-o h4{
+    font-size: .625rem;
+}
+
+@media (min-width: 768px) {
+    img{
+        height: 12.5rem;
+        object-fit: cover;
+    }
+
+    owl-carousel-o h4{
+        font-size: 1.25rem;
+    }
 }
