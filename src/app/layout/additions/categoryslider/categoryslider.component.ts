@@ -51,7 +51,7 @@ export class CategorysliderComponent implements OnInit {
       },
       error: (err) => {
         this.isLoading = false;
-        console.log(err);
+        // console.log(err);
       },
     });
   }

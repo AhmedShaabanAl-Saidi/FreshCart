@@ -3,11 +3,12 @@ import { ProductService } from '../../../shared/services/product/product.service
 import { product } from '../../../shared/interfaces/product';
 import { CategorysliderComponent } from '../../additions/categoryslider/categoryslider.component';
 import { HomesliderComponent } from '../../additions/homeslider/homeslider.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CategorysliderComponent,HomesliderComponent],
+  imports: [CategorysliderComponent,HomesliderComponent,RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

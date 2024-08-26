@@ -14,7 +14,7 @@
     <div class="row">
         @for (product of productList; track $index) {
         <div class="w-6/12 md:w-4/12 lg:w-2/12 p-3">
-            <div class="product p-2">
+            <div class="product p-2 cursor-pointer" [routerLink]="['/productDetails' , product._id]">
                 <img [src]="product.imageCover" [alt]="product.category.name">
                 <span class="text-main font-sm">{{product.category.name}}</span>
                 <h3 class="my-1 font-medium">{{product.title.split(' ').splice(0,2).join(' ')}}</h3>

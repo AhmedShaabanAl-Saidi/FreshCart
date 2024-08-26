@@ -1,1 +1,27 @@
-<p>product-details works!</p>
+@if (isLoading) {
+<div class="row justify-center items-center py-36">
+    <div class="loader"></div>
+</div>}
+@else {
+@if (product) {
+<div class="product-details my-5">
+    <div class="row items-center">
+        <div class="md:w-3/12 p-3">
+            <img [src]="product.imageCover" class="w-full" [alt]="product.title">
+        </div>
+        <div class="md:w-9/12 p-3">
+            <h1 class="text-lg font-medium">{{product.title}}</h1>
+            <p class="text-sm text-gray-400 my-3">{{product.description}}</p>
+            <span class="text-xs">{{product.category.name}}</span>
+
+            <div class="row justify-between items-center">
+                <span>{{product.price}}EGP</span>
+                <span>{{product.ratingsAverage}} <i class="fa fa-star rating-color"></i></span>
+            </div>
+
+            <button class="btn-main w-full">Add To Cart</button>
+        </div>
+    </div>
+</div>
+}
+}
