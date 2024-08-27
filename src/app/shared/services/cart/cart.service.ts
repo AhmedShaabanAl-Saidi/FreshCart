@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Environment } from '../../../base/Enviroment';
 import { SuccessAddProduct } from '../../interfaces/success-add-product';
 import { FailAddProduct } from '../../interfaces/fail-add-product';
+import { CartResponse } from '../../interfaces/cart';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +26,11 @@ export class CartService {
         headers: this.userTokenHeader,
       }
     );
+  }
+
+  getLoggedUserCart(): Observable<CartResponse> {
+    return this._HttpClient.get<CartResponse>(`${Environment.baseUrl}/api/v1/cart`, {
+      headers: this.userTokenHeader,
+    });
   }
 }

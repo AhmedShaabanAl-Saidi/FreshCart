@@ -1,1 +1,35 @@
-<p>cart works!</p>
+@if (isLoading) {
+<div class="h-screen row justify-center items-center">
+    <div class="loader"></div>
+</div>
+}@else {
+@if (data)
+{
+<div class="cart [text-transform:capitalize] py-5">
+    <h1 class="text-xl font-semibold my-3">shope cart</h1>
+    <p class="text-main mb-3">total price : {{data.totalCartPrice}} EGP</p>
+
+    @for (product of data.products; track $index)
+    {
+    <div class="row bg-gray-200 border-b items-center border-gray-400 rounded">
+        <div class="md:w-1/12 p-3">
+            <img [src]="product.product.imageCover" [alt]="product.product.title">
+        </div>
+
+        <div class="md:w-10/12 p-3">
+            <h2 class="text-lg font-medium mt-2">{{product.product.title}}</h2>
+            <p class="text-main my-3">price : {{product.price}} EGP</p>
+            <span class="cursor-pointer"><i class="fa fa-trash text-main"></i> remove </span>
+        </div>
+
+        <div class="md:w-1/12 md:p-0 pe-5 ms-auto row flex-nowrap items-center md:justify-evenly">
+            <button class="text-white bg-green-400 rounded p-2">+</button>
+            <span>{{product.count}}</span>
+            <button class="text-white bg-red-400 rounded p-2">-</button>
+        </div>
+
+    </div>
+    }
+</div>
+}
+}
