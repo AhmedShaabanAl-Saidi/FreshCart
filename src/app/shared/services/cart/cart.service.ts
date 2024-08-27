@@ -15,8 +15,10 @@ export class CartService {
 
   constructor(private _HttpClient: HttpClient) {}
 
-  addProductToCart(productId: string): Observable<SuccessAddProduct|FailAddProduct> {
-    return this._HttpClient.post<SuccessAddProduct|FailAddProduct>(
+  addProductToCart(
+    productId: string
+  ): Observable<SuccessAddProduct | FailAddProduct> {
+    return this._HttpClient.post<SuccessAddProduct | FailAddProduct>(
       `${Environment.baseUrl}/api/v1/cart`,
       { productId: productId },
       {

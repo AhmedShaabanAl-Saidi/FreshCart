@@ -60,8 +60,7 @@ export class HomeComponent implements OnInit {
     this._CartService.addProductToCart(productId).subscribe({
       next: (res) => {
         // console.log(res);
-        if('status' in res)
-        {
+        if ('status' in res) {
           this.toastr.success(res.message, res.status, {
             progressBar: true,
           });
