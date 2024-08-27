@@ -4,17 +4,26 @@ import { product } from '../../../shared/interfaces/product';
 import { CategorysliderComponent } from '../../additions/categoryslider/categoryslider.component';
 import { HomesliderComponent } from '../../additions/homeslider/homeslider.component';
 import { RouterLink } from '@angular/router';
+import { SearchPipe } from '../../../shared/pipes/search.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CategorysliderComponent,HomesliderComponent,RouterLink],
+  imports: [
+    CategorysliderComponent,
+    HomesliderComponent,
+    RouterLink,
+    SearchPipe,
+    FormsModule,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
   productList!: product[];
   isLoading: boolean = false;
+  userInput: string = '';
 
   constructor(private _ProductService: ProductService) {}
 
