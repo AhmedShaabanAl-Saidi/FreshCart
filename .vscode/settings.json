@@ -10,6 +10,7 @@
         "homeslider",
         "imgs",
         "signin",
-        "tailwindcss"
+        "tailwindcss",
+        "toastr"
     ]
 }

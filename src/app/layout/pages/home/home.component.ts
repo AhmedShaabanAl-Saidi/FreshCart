@@ -6,6 +6,7 @@ import { HomesliderComponent } from '../../additions/homeslider/homeslider.compo
 import { RouterLink } from '@angular/router';
 import { SearchPipe } from '../../../shared/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit {
   isLoading: boolean = false;
   userInput: string = '';
 
-  constructor(private _ProductService: ProductService) {}
+  constructor(private _ProductService: ProductService,private toastr: ToastrService) {}
 
   ngOnInit(): void {
     if (typeof localStorage != 'undefined') {
