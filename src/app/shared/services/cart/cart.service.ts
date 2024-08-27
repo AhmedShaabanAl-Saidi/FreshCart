@@ -29,8 +29,33 @@ export class CartService {
   }
 
   getLoggedUserCart(): Observable<CartResponse> {
-    return this._HttpClient.get<CartResponse>(`${Environment.baseUrl}/api/v1/cart`, {
-      headers: this.userTokenHeader,
-    });
+    return this._HttpClient.get<CartResponse>(
+      `${Environment.baseUrl}/api/v1/cart`,
+      {
+        headers: this.userTokenHeader,
+      }
+    );
+  }
+
+  updateProductCartCount(
+    productId: string,
+    count: string
+  ): Observable<CartResponse> {
+    return this._HttpClient.put<CartResponse>(
+      `${Environment.baseUrl}/api/v1/cart/${productId}`,
+      { count: count },
+      {
+        headers: this.userTokenHeader,
+      }
+    );
+  }
+
+  removeProductFromCart(productId: string): Observable<CartResponse> {
+    return this._HttpClient.delete<CartResponse>(
+      `${Environment.baseUrl}/api/v1/cart/${productId}`,
+      {
+        headers: this.userTokenHeader,
+      }
+    );
   }
 }
