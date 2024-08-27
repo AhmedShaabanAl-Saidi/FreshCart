@@ -31,17 +31,19 @@
     <div class="row">
         @for (product of productList |search : userInput; track $index) {
         <div class="w-6/12 md:w-4/12 lg:w-2/12 p-3">
-            <div class="product p-2 cursor-pointer" [routerLink]="['/productDetails' , product._id]">
-                <img [src]="product.imageCover" [alt]="product.category.name">
-                <span class="text-main font-sm">{{product.category.name}}</span>
-                <h3 class="my-1 font-medium">{{product.title.split(' ').splice(0,2).join(' ')}}</h3>
+            <div class="product p-2 cursor-pointer">
+                <div class="product-details" [routerLink]="['/productDetails' , product._id]">
+                    <img [src]="product.imageCover" [alt]="product.category.name">
+                    <span class="text-main font-sm">{{product.category.name}}</span>
+                    <h3 class="my-1 font-medium">{{product.title.split(' ').splice(0,2).join(' ')}}</h3>
 
-                <div class="row justify-between items-center">
-                    <span>{{product.price}} EGP</span>
-                    <span>{{product.ratingsAverage}} <i class="fa fa-star rating-color"></i></span>
+                    <div class="row justify-between items-center">
+                        <span>{{product.price}} EGP</span>
+                        <span>{{product.ratingsAverage}} <i class="fa fa-star rating-color"></i></span>
+                    </div>
                 </div>
 
-                <button class="btn-main w-full">Add To Cart</button>
+                <button (click)="addProductToCart(product._id)" class="btn-main w-full">Add To Cart</button>
             </div>
         </div>
         }

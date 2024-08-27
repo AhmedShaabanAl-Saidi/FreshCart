@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { SearchPipe } from '../../../shared/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CartService } from '../../../shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +27,11 @@ export class HomeComponent implements OnInit {
   isLoading: boolean = false;
   userInput: string = '';
 
-  constructor(private _ProductService: ProductService,private toastr: ToastrService) {}
+  constructor(
+    private _ProductService: ProductService,
+    private toastr: ToastrService,
+    private _CartService: CartService
+  ) {}
 
   ngOnInit(): void {
     if (typeof localStorage != 'undefined') {
@@ -47,6 +52,20 @@ export class HomeComponent implements OnInit {
       error: (err) => {
         console.log(err);
         this.isLoading = false;
+      },
+    });
+  }
+
+  addProductToCart(productId: string) {
+    this._CartService.addProductToCart(productId).subscribe({
+      next: (res) => {
+        // console.log(res);
+        if('status' in res)
+        {
+          this.toastr.success(res.message, res.status, {
+            progressBar: true,
+          });
+        }
       },
     });
   }
