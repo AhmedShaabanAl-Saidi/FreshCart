@@ -30,7 +30,7 @@ export class LoginComponent {
       this.isLoading = true;
       this._AuthService.signIn(this.loginForm.value).subscribe({
         next: (res) => {
-          console.log(res);
+          // console.log(res);
           
           if ('user' in res) {
             localStorage.setItem('userName', res.user?.name);
