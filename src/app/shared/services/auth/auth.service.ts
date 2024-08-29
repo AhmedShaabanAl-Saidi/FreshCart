@@ -37,7 +37,7 @@ export class AuthService {
     if (isPlatformBrowser(id)) {
       if (localStorage.getItem('userToken')) {
         this.deCodeUserData();
-        _Router.navigate([localStorage.getItem('currentPage')]);
+        // _Router.navigate([localStorage.getItem('currentPage')]);
       }
     }
   }

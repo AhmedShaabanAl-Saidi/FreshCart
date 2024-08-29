@@ -33,6 +33,14 @@
 
     </div>
     }
+
+    <button [disabled]="data.totalCartPrice<=0" class="btn-main block ms-auto my-5"
+        [routerLink]="['/shippingaddress' , data._id]">Order</button>
+</div>
+}
+@else {
+<div class="alert-danger my-5">
+    <p>{{errMsg}}</p>
 </div>
 }
 }

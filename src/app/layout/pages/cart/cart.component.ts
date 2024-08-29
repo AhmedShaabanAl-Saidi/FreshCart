@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../../shared/services/cart/cart.service';
 import { Data } from '../../../shared/interfaces/cart';
-import { log } from 'console';
-
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })
 export class CartComponent implements OnInit {
   data!: Data;
   isLoading: boolean = false;
+  errMsg!: string;
 
   constructor(private _CartService: CartService) {}
 
@@ -31,6 +31,9 @@ export class CartComponent implements OnInit {
         this.isLoading = false;
         // console.log(res.data);
         this.data = res.data;
+      },
+      error: (err) => {
+        this.errMsg = err.error.message;
       },
     });
   }

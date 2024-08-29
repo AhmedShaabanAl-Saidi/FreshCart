@@ -19,3 +19,9 @@ export interface registerData extends logInData, email {
 export interface logInData extends email {
   password: string;
 }
+
+export interface address {
+  details: string;
+  phone: string;
+  city: string;
+}
