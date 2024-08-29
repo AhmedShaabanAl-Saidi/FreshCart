@@ -5,48 +5,4 @@
 <h2 class="my-2 md:text-2xl font-bold">Popular Categories</h2>
 <app-categoryslider></app-categoryslider>
 
-@if (isLoading) {
-<div class="h-screen row justify-center items-center">
-    <div class="loader"></div>
-</div>
-}@else {
-<div class="home-page text-capitalize">
-
-    <!-- search-pipe -->
-    <div class="search-pipe w-3/4 md:w-1/2 me-auto p-3">
-        <div class="relative">
-            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                </svg>
-            </div>
-            <input type="search" id="search" [(ngModel)]="userInput"
-                class="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded bg-gray-50 form-control dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                placeholder="Search By Name ......" />
-        </div>
-    </div>
-
-    <div class="row">
-        @for (product of productList |search : userInput; track $index) {
-        <div class="w-6/12 md:w-4/12 lg:w-2/12 p-3">
-            <div class="product p-2 cursor-pointer">
-                <div class="product-details" [routerLink]="['/productDetails' , product._id]">
-                    <img [src]="product.imageCover" [alt]="product.category.name">
-                    <span class="text-main font-sm">{{product.category.name}}</span>
-                    <h3 class="my-1 font-medium">{{product.title.split(' ').splice(0,2).join(' ')}}</h3>
-
-                    <div class="row justify-between items-center">
-                        <span>{{product.price}} EGP</span>
-                        <span>{{product.ratingsAverage}} <i class="fa fa-star rating-color"></i></span>
-                    </div>
-                </div>
-
-                <button (click)="addProductToCart(product._id)" class="btn-main w-full">Add To Cart</button>
-            </div>
-        </div>
-        }
-    </div>
-</div>
-}
+<app-products></app-products>
