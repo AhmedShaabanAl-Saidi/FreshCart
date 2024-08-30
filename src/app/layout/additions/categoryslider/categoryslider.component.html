@@ -7,7 +7,7 @@
     @for (category of categoryList; track $index) {
     <ng-template carouselSlide [id]="category._id">
         <img [src]="category.image" [alt]="category.name" [title]="category.name">
-        <h5 class="font-medium">{{category.name}}</h5>
+        <span class="text-sm md:text-lg font-medium">{{category.name}}</span>
     </ng-template>
     }
 </owl-carousel-o>
