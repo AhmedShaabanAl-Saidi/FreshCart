@@ -1,1 +1,20 @@
-<p>brands works!</p>
+<div class="barnds my-5">
+    <h1 class="text-center my-5 text-main font-extrabold text-4xl">All Brands</h1>
+
+    @if (isLoading) {
+    <div class="h-screen row justify-center items-center">
+        <div class="loader"></div>
+    </div>
+    }@else {
+    <div class="row">
+        @for (brand of brandsList; track $index) {
+        <div class="w-full md:w-4/12 lg:w-3/12 p-3">
+            <div class="barnds-cart cursor-pointer product">
+                <img [src]="brand.image" class="w-full" [alt]="brand.name">
+                <p class="text-center py-3 text-2xl font-semibold border-t">{{brand.name}}</p>
+            </div>
+        </div>
+        }
+    </div>
+    }
+</div>
