@@ -15,4 +15,10 @@ export class CatgeoryService {
       `${Environment.baseUrl}/api/v1/categories`
     );
   }
+
+  getAllSubCategories(catgeoryId:string): Observable<CategoryResponse> {
+    return this._HttpClient.get<CategoryResponse>(
+      `${Environment.baseUrl}/api/v1/categories/${catgeoryId}/subcategories`
+    );
+  }
 }

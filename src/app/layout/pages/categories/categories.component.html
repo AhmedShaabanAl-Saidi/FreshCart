@@ -1,1 +1,24 @@
-<p>categories works!</p>
+@if (isLoading) {
+<div class="h-screen row justify-center items-center">
+    <div class="loader"></div>
+</div>
+}@else {
+<div class="category row my-5">
+    @for (category of categoryList; track $index) {
+    <div class="md:w-4/12 lg:w-3/12 p-3">
+        <div class="category-cart rounded cursor-pointer product" (click)="getAllSubCategories(category._id)">
+            <img [src]="category.image" class="w-full" [alt]="category.name">
+            <p class="text-center text-main text-2xl font-semibold py-3 border-t">{{category.name}}</p>
+        </div>
+    </div>
+    }
+</div>
+
+<div class="SubCategories row">
+    @for (Subcategory of SubcategoryList; track $index) {
+        <div class="md:w-4/12 lg:w-3/12 p-3">
+            <p class="product text-center text-xl font-semibold py-2">{{Subcategory.name}}</p>
+        </div>
+    }
+</div>
+}
