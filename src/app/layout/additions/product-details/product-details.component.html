@@ -10,7 +10,7 @@
             <owl-carousel-o [options]="customOptions">
                 @for (img of product.images; track $index) {
                 <ng-template carouselSlide>
-                    <img [src]="img" class="w-full" alt="slider-image">
+                    <img [src]="img" class="w-full rounded" alt="slider-image">
                 </ng-template>
                 }
             </owl-carousel-o>
@@ -25,7 +25,7 @@
                 <span>{{product.ratingsAverage}} <i class="fa fa-star rating-color"></i></span>
             </div>
 
-            <button class="btn-main w-full">Add To Cart</button>
+            <button (click)="addProductToCart(product._id)" class="btn-main w-full">Add To Cart</button>
         </div>
     </div>
 </div>
