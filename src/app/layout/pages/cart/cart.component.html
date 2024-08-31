@@ -34,8 +34,12 @@
     </div>
     }
 
-    <button [disabled]="data.totalCartPrice<=0" class="btn-main block ms-auto my-5"
-        [routerLink]="['/shippingaddress' , data._id]">Order</button>
+    <div class="cart-btn my-5 flex items-center justify-between">
+        <button [disabled]="data.totalCartPrice<=0" class="btn-danger block" (click)="clearCart()">Clear Cart</button>
+
+        <button [disabled]="data.totalCartPrice<=0" class="btn-main block"
+            [routerLink]="['/shippingaddress' , data._id]">Order</button>
+    </div>
 </div>
 }
 @else {

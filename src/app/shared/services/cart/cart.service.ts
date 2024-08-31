@@ -58,4 +58,14 @@ export class CartService {
       }
     );
   }
+
+  clearCart(): Observable<CartResponse>
+  {
+    return this._HttpClient.delete<CartResponse>(
+      `${Environment.baseUrl}/api/v1/cart/`,
+      {
+        headers: this.userTokenHeader,
+      }
+    );
+  }
 }
