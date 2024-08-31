@@ -58,6 +58,7 @@ export class CartComponent implements OnInit {
       next: (res) => {
         // console.log(res);
         this.data = res.data;
+        this._CartService.cartNumber.next(res.numOfCartItems);
       },
     });
   }
@@ -67,6 +68,7 @@ export class CartComponent implements OnInit {
       next: (res) => {
         // console.log(res);
         this.data = res.data;
+        this._CartService.cartNumber.next(0);
       },
     });
   }

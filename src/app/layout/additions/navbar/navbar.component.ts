@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { afterNextRender, Component, inject, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth/auth.service';
 import { FlowbiteService } from '../../../shared/services/flowbite/flowbite.service';
+import { CartService } from '../../../shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,18 +16,22 @@ export class NavbarComponent implements OnInit {
   userName!: string | null;
   userStatus!: string | null;
   userEmail!: string | null;
-  
-  constructor(public _AuthService: AuthService,private _FlowbiteService:FlowbiteService) {}
+  productCount: number = 0;
+
+  constructor(
+    public _AuthService: AuthService,
+    private _FlowbiteService: FlowbiteService,
+    private _CartService: CartService
+  ) {}
 
   ngOnInit(): void {
-
     if (typeof localStorage !== 'undefined') {
       this.userName = localStorage.getItem('userName');
       this.userStatus = localStorage.getItem('userState');
       this.userEmail = localStorage.getItem('userEmail');
     }
 
-    this._FlowbiteService.loadFlowbite(flowbite => {
+    this._FlowbiteService.loadFlowbite((flowbite) => {
       // Your custom code here
       // console.log('Flowbite loaded', flowbite);
     });
@@ -37,6 +42,19 @@ export class NavbarComponent implements OnInit {
       } else {
         this.isLogin = false;
       }
+    });
+
+
+    this._CartService.getLoggedUserCart().subscribe({
+      next: (res) => {
+        this._CartService.cartNumber.next(res.numOfCartItems);
+      },
+    });
+
+    this._CartService.cartNumber.subscribe({
+      next: (data) => {
+        this.productCount = data;
+      },
     });
   }
 }

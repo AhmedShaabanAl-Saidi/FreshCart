@@ -1,21 +1,24 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Environment } from '../../../base/Enviroment';
 import { SuccessAddProduct } from '../../interfaces/success-add-product';
 import { FailAddProduct } from '../../interfaces/fail-add-product';
 import { CartResponse } from '../../interfaces/cart';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
+  cartNumber: BehaviorSubject<number> = new BehaviorSubject(0);
+
+  constructor(private _HttpClient: HttpClient,@Inject(PLATFORM_ID) private platformId:object) {}
+
   userTokenHeader = {
-    token: localStorage.getItem('userToken') || '',
+    token: isPlatformBrowser(this.platformId) ? localStorage.getItem('userToken') || '' : ''
   };
-
-  constructor(private _HttpClient: HttpClient) {}
-
+  
   addProductToCart(
     productId: string
   ): Observable<SuccessAddProduct | FailAddProduct> {
@@ -59,8 +62,7 @@ export class CartService {
     );
   }
 
-  clearCart(): Observable<CartResponse>
-  {
+  clearCart(): Observable<CartResponse> {
     return this._HttpClient.delete<CartResponse>(
       `${Environment.baseUrl}/api/v1/cart/`,
       {

@@ -12,11 +12,13 @@ import { ForgetpasswordComponent } from './layout/additions/forgetpassword/forge
 import { ProductDetailsComponent } from './layout/additions/product-details/product-details.component';
 import { ShippingAddressComponent } from './layout/additions/shipping-address/shipping-address.component';
 import { AllordersComponent } from './layout/additions/allorders/allorders.component';
+import { WishlistComponent } from './layout/pages/wishlist/wishlist.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent,canActivate :[authGuard] },
   { path: 'cart', component: CartComponent,canActivate :[authGuard] },
+  { path: 'wishlist', component: WishlistComponent,canActivate :[authGuard] },
   { path: 'products', component: ProductsComponent ,canActivate :[authGuard]},
   { path: 'brands', component: BrandsComponent ,canActivate :[authGuard]},
   { path: 'categories', component: CategoriesComponent ,canActivate :[authGuard]},

@@ -10,13 +10,11 @@ import { SearchPipe } from '../../../shared/pipes/search.pipe';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [RouterLink,
-    SearchPipe,
-    FormsModule,],
+  imports: [RouterLink, SearchPipe, FormsModule],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.scss'
+  styleUrl: './products.component.scss',
 })
-export class ProductsComponent implements OnInit{
+export class ProductsComponent implements OnInit {
   productList!: product[];
   isLoading: boolean = false;
   userInput: string = '';
@@ -53,8 +51,11 @@ export class ProductsComponent implements OnInit{
   addProductToCart(productId: string) {
     this._CartService.addProductToCart(productId).subscribe({
       next: (res) => {
-        // console.log(res);
+        console.log(res);
         if ('status' in res) {
+          this._CartService.cartNumber.next(res.numOfCartItems);
+          // console.log(this._CartService.cartNumber);
+
           this.toastr.success(res.message, res.status, {
             progressBar: true,
           });

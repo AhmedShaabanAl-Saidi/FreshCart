@@ -73,6 +73,7 @@ export class ProductDetailsComponent implements OnInit {
       next: (res) => {
         // console.log(res);
         if ('status' in res) {
+          this._CartService.cartNumber.next(res.numOfCartItems);
           this.toastr.success(res.message, res.status, {
             progressBar: true,
           });
