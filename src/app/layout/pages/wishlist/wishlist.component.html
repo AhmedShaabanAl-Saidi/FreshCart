@@ -1,1 +1,37 @@
-<p>wishlist works!</p>
+@if (isLoading) {
+    <div class="h-screen row justify-center items-center">
+        <div class="loader"></div>
+    </div>
+    }@else {
+    @if (data)
+    {
+    <div class="cart [text-transform:capitalize] py-5">
+        <h1 class="text-xl font-semibold my-3">My wish List</h1>
+    
+        @for (product of data; track $index)
+        {
+        <div class="row bg-gray-200 border-b items-center border-gray-400 rounded">
+            <div class="md:w-2/12 xl:w-1/12 p-3">
+                <img [src]="product.imageCover" [alt]="product.title">
+            </div>
+    
+            <div class="md:w-6/12 xl:w-9/12 p-3">
+                <h2 class="text-lg font-medium mt-2">{{product.title}}</h2>
+                <p class="text-main my-3">price : {{product.price}} EGP</p>
+                <span (click)="removeProductFromWishlist(product._id)" class="cursor-pointer"><i class="fa fa-trash text-main"></i> remove </span>
+            </div>
+    
+            <div class="md:w-4/12 xl:w-2/12 md:p-0 pe-5 md:mb-0 mb-5 ms-auto row items-center md:justify-evenly">
+                <button (click)="addProductToCart(product._id)" class="btn-main ml-12">Add To Cart</button>
+            </div>
+    
+        </div>
+        }
+    </div>
+    }
+    @else {
+    <div class="alert-danger my-5">
+        <p>{{errMsg}}</p>
+    </div>
+    }
+    }

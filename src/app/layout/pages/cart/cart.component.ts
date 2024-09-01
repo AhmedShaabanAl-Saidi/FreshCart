@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../../shared/services/cart/cart.service';
 import { Data } from '../../../shared/interfaces/cart';
 import { RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit {
   isLoading: boolean = false;
   errMsg!: string;
 
-  constructor(private _CartService: CartService) {}
+  constructor(private _CartService: CartService,private toastr: ToastrService) {}
 
   ngOnInit(): void {
     if (typeof localStorage != 'undefined') {

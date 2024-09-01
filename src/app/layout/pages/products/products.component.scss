@@ -1,0 +1,42 @@
+/* From Uiverse.io by andrew-demchenk0 */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.container svg {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 35px;
+  width: 35px;
+  transition: all 0.3s;
+  fill: #666;
+}
+
+.container svg:hover {
+  transform: scale(1.1);
+}
+
+.container input:checked ~ svg {
+  fill: #e3474f;
+}
+
+.wishlist{
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.product:hover .wishlist{
+  opacity: 1;
+}
