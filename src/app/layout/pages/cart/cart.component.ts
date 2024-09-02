@@ -15,7 +15,11 @@ export class CartComponent implements OnInit {
   isLoading: boolean = false;
   errMsg!: string;
 
-  constructor(private _CartService: CartService,private toastr: ToastrService, private _Router: Router) {}
+  constructor(
+    private _CartService: CartService,
+    private toastr: ToastrService,
+    private _Router: Router
+  ) {}
 
   ngOnInit(): void {
     if (typeof localStorage != 'undefined') {
@@ -58,9 +62,13 @@ export class CartComponent implements OnInit {
     this._CartService.removeProductFromCart(productId).subscribe({
       next: (res) => {
         // console.log(res);
-        this.toastr.warning("Product Removed Successfully From Your Cart", res.status, {
-          progressBar: true,
-        });
+        this.toastr.warning(
+          'Product Removed Successfully From Your Cart',
+          res.status,
+          {
+            progressBar: true,
+          }
+        );
         this.data = res.data;
         this._CartService.cartNumber.next(res.numOfCartItems);
       },
@@ -72,14 +80,14 @@ export class CartComponent implements OnInit {
       next: (res) => {
         // console.log(res);
         this._CartService.cartNumber.next(0);
-        this.toastr.warning("Cart Removed Successfully", "", {
+        this.toastr.warning('Cart Removed Successfully', '', {
           progressBar: true,
         });
         this._Router.navigate(['/home']);
       },
-      error : err => {
+      error: (err) => {
         console.log(err);
-      }
+      },
     });
   }
 }

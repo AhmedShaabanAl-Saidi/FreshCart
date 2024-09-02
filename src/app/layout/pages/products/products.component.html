@@ -29,9 +29,9 @@
 
                     @if (wishlistUserDataId && wishlistUserDataId.includes(product._id)) {
                     <i (click)="removeProductFromWishlist(product._id)"
-                        class="fa-solid fa-heart text-red-500 text-3xl"></i>
+                        class="fa-solid fa-heart text-red-600 text-3xl"></i>
                     }@else{
-                    <i (click)="addProductToWishlist(product._id)" class="fa-regular fa-heart text-3xl"></i>
+                    <i (click)="addProductToWishlist(product._id)" class="fa-solid fa-heart text-3xl"></i>
                     }
 
 

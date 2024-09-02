@@ -37,6 +37,7 @@ export class AuthService {
     if (isPlatformBrowser(id)) {
       if (localStorage.getItem('userToken')) {
         this.deCodeUserData();
+        
         // _Router.navigate([localStorage.getItem('currentPage')]);
       }
     }
@@ -83,9 +84,10 @@ export class AuthService {
     // decode token
     const token = JSON.stringify(localStorage.getItem('userToken'));
     const decoded = jwtDecode(token);
-    this.userData.next(decoded);
+    this.userData.next(decoded);    
 
-    // console.log(this.userData.getValue());
+    // console.log(this.userData.getValue()?.id);
+    localStorage.setItem('userId',this.userData.getValue()?.id!);
   }
 
   logOut() {
@@ -93,5 +95,6 @@ export class AuthService {
     this.userData.next(null);
     this._Router.navigate(['/login']);
     localStorage.removeItem('wishlistUserDataId');
+    localStorage.removeItem('userId');
   }
 }

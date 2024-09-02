@@ -27,4 +27,10 @@ export class OrderService {
       }
     );
   }
+
+  allOrders(userId: string) : Observable<any> {
+    return this._HttpClient.get(
+      `${Environment.baseUrl}/api/v1/orders/user/${userId}`
+    );
+  }
 }

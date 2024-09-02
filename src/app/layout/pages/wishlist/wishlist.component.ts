@@ -15,7 +15,7 @@ export class WishlistComponent implements OnInit {
   data: Data[] = [];
   isLoading: boolean = false;
   errMsg!: string;
-  wishlistCount!: number;
+  wishlistUserDataId: string[] = [];
 
   constructor(
     private _WishlistService: WishlistService,
@@ -69,10 +69,18 @@ export class WishlistComponent implements OnInit {
         });
         this._WishlistService.getLoggedUserWishlist().subscribe({
           next: (res) => {
-            this.wishlistCount = res.count;
             this.data = res.data;
           },
         });
+        if (Array.isArray(res.data)) {
+          this.wishlistUserDataId = res.data;
+        } else {
+          this.wishlistUserDataId = [];
+        }
+        localStorage.setItem(
+          'wishlistUserDataId',
+          JSON.stringify(this.wishlistUserDataId)
+        );
       },
     });
   }

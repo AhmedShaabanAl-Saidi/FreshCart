@@ -40,7 +40,7 @@ export class LoginComponent {
           
           if ('token' in res) {
             localStorage.setItem('userToken', res.token);
-            this._AuthService.deCodeUserData();
+            this._AuthService.deCodeUserData();            
           }
           this.isLoading = false;
           this._Router.navigate(['/home']);
