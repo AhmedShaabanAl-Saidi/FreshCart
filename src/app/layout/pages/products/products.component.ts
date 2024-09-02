@@ -20,8 +20,8 @@ export class ProductsComponent implements OnInit {
   isLoading: boolean = false;
   userInput: string = '';
 
-  wishlistData:string[] =[];
-
+  wishlistData: string[] = [];
+  wishlistUserDataId: string[] = [];
 
   constructor(
     private _ProductService: ProductService,
@@ -33,6 +33,12 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     if (typeof localStorage != 'undefined') {
       localStorage.setItem('currentPage', '/products');
+
+      // Load wishlist from localStorage on component init
+      const storedWishlist = localStorage.getItem('wishlistUserDataId');
+      if (storedWishlist) {
+        this.wishlistUserDataId = JSON.parse(storedWishlist);
+      }
     }
 
     this.getAllProducts();
@@ -72,7 +78,11 @@ export class ProductsComponent implements OnInit {
   addProductToWishlist(productId: string) {
     this._WishlistService.addProductToWishlist(productId).subscribe({
       next: (res) => {
-        // console.log(res);
+        if ('data' in res) {
+          this.wishlistUserDataId = res.data || [];
+          localStorage.setItem('wishlistUserDataId', JSON.stringify(this.wishlistUserDataId));
+          // console.log(this.wishlistUserDataId);
+        }
         if ('status' in res) {
           this.toastr.success(res.message, res.status, {
             progressBar: true,
@@ -85,7 +95,12 @@ export class ProductsComponent implements OnInit {
   removeProductFromWishlist(productId: string) {
     this._WishlistService.removeProductFromCart(productId).subscribe({
       next: (res) => {
-        // console.log(res);
+        if (Array.isArray(res.data)) {
+          this.wishlistUserDataId = res.data;
+        } else {
+          this.wishlistUserDataId = [];
+        }
+        localStorage.setItem('wishlistUserDataId', JSON.stringify(this.wishlistUserDataId));
         this.toastr.warning(res.message, res.status, {
           progressBar: true,
         });

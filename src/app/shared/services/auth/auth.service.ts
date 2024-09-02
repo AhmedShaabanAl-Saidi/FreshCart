@@ -92,5 +92,6 @@ export class AuthService {
     localStorage.removeItem('userToken');
     this.userData.next(null);
     this._Router.navigate(['/login']);
+    localStorage.removeItem('wishlistUserDataId');
   }
 }
