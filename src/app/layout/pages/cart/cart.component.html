@@ -3,7 +3,7 @@
     <div class="loader"></div>
 </div>
 }@else {
-@if (data)
+@if (data.products.length != 0)
 {
 <div class="cart [text-transform:capitalize] py-5">
     <h1 class="text-xl font-semibold my-3">shope cart</h1>
@@ -43,8 +43,9 @@
 </div>
 }
 @else {
-<div class="alert-danger my-5">
-    <p>{{errMsg}}</p>
+<div class="empty-cart flex flex-col items-center justify-center mt-20">
+    <i class="fa-solid fa-cart-plus text-main text-9xl"></i>
+    <h2 class="text-5xl font-semibold mt-5">your Cart Is Empty</h2>
 </div>
 }
 }
