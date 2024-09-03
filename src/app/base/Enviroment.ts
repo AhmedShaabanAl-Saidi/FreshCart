@@ -1,4 +1,4 @@
 export enum Environment {
   baseUrl = 'https://ecommerce.routemisr.com',
-  baseUrlWebSite = 'http://localhost:4200',
+  baseUrlWebSite = 'https://fresh-cart-six-iota.vercel.app',
 }
