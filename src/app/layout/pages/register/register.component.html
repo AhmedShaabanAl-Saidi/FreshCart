@@ -149,14 +149,19 @@
                 }
             </div>
 
-            <button [disabled]="registerForm.invalid" class="btn-main ms-auto block mt-5">
+            <div class="flex items-center justify-between mt-5">
+                <button [disabled]="registerForm.invalid" class="btn-main">
                 @if (isLoading) {
                 <span><i class="fa fa-spin fa-spinner"></i></span>
                 }
                 @else {
-                <span>Register</span>
+                <span>Sign up</span>
                 }
             </button>
+
+            <p class="text-lg font-medium">already have an account? <a routerLink="/login" class="text-blue-500 cursor-pointer">Sign in</a></p>
+            </div>
+            
         </form>
     </div>
 </div>

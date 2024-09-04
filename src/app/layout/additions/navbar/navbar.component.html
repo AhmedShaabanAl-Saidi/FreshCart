@@ -93,17 +93,17 @@
                             @if (isLogin == false) {
                             <li>
                                 <a routerLink="login" routerLinkActive="text-main"
-                                    class="inline-block mx-2 rounded px-4 py-1 text-lg text-gray-700 hover:bg-gray-100">Login</a>
+                                    class="inline-block mx-2 rounded px-4 py-1 text-lg text-gray-700 hover:bg-gray-100">Signin</a>
                             </li>
                             <li>
                                 <a routerLink="register" routerLinkActive="text-main"
-                                    class="inline-block mx-2 rounded px-4 py-1 text-lg text-gray-700 hover:bg-gray-100">Register</a>
+                                    class="inline-block mx-2 rounded px-4 py-1 text-lg text-gray-700 hover:bg-gray-100">Signup</a>
                             </li>
                             }
                             @else {
                             <li>
                                 <a routerLinkActive="text-main" (click)="_AuthService.logOut()"
-                                    class="inline-block mx-2 rounded px-4 py-1 text-lg text-gray-700 hover:bg-gray-100 cursor-pointer">Logout</a>
+                                    class="inline-block mx-2 rounded px-4 py-1 text-lg text-gray-700 hover:bg-gray-100 cursor-pointer">SignOut</a>
                             </li>
                             }
                         </ul>

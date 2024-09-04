@@ -55,17 +55,21 @@
                 }
             </div>
 
-            <div class="flex items-center justify-end mt-5 gap-3">
-                <a routerLink="/forgetpassword" class="text-blue-500 underline cursor-pointer">forget password</a>
-
+            <div class="flex items-center justify-between mt-5 gap-3">
                 <button [disabled]="loginForm.invalid" class="btn-main">
                     @if (isLoading) {
                     <span><i class="fa fa-spin fa-spinner"></i></span>
                     }
                     @else {
-                    <span>Login</span>
+                    <span>Sign in</span>
                     }
                 </button>
+
+                <a routerLink="/forgetpassword" class="text-blue-500 underline cursor-pointer text-lg font-medium">forget password</a>
+            </div>
+
+            <div class="flex items-center justify-center mt-5 text-lg font-medium">
+                <p>Don't have an account? <a routerLink="/register" class="text-blue-500 cursor-pointer">Sign Up</a></p>
             </div>
 
         </form>
