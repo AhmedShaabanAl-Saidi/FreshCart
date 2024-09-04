@@ -94,7 +94,7 @@
                         <br>
                         4-Contains at least one digit.
                         <br>
-                        5-Contains at least one special character.
+                        5-Contains at least one special character. (!&#64;#$%^&*)
                     </p>
                     }
                 </div>
@@ -102,7 +102,7 @@
             </div>
 
             <div class="rePassword mt-2">
-                <label for="repassword">rePassword :</label>
+                <label for="repassword">confirm password :</label>
                 <input formControlName="rePassword" type="password" id="confirm_password"
                     class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                     placeholder="•••••••••" />
@@ -114,7 +114,7 @@
                     <p class="p-1 m-0"> rePassword is required </p>
                     }
                     @else if (registerForm.get('rePassword')?.errors?.['mismatch']) {
-                    <p class="p-1 m-0"> rePassword not match password </p>
+                    <p class="p-1 m-0"> Passwords do NOT match </p>
                     }
                 </div>
                 }

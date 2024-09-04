@@ -3,7 +3,8 @@
     <div class="loader"></div>
 </div>
 }@else {
-<h1 class="md:text-2xl font-bold my-5">Your All Orders</h1>
+@if (allordersList.length !=0) {
+<h1 class="md:text-2xl font-bold my-5">All Your Orders</h1>
 
 <div class="all-orders row my-5">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
@@ -49,4 +50,11 @@
         </table>
     </div>
 </div>
+}@else {
+    <div class="empty-cart flex flex-col items-center justify-center mt-20 text-center">
+        <i class="fa-solid fa-cart-plus text-main text-9xl"></i>
+        <h2 class="text-3xl md:text-5xl font-semibold mt-5">You Have No Orders Yet !</h2>
+    </div>
+}
+
 }

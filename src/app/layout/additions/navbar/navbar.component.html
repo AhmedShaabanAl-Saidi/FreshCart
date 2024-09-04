@@ -27,7 +27,7 @@
                 <div class="flex flex-shrink-0 items-center cart-logo cursor-pointer" routerLink="home">
                     <img src="assets/images/freshcart-logo.svg" alt="cart-logo">
                 </div>
-                <div class="hidden md:ml-6 md:block">
+                <div class="hidden md:ml-6 md:block text-sm 2xl:text-lg">
                     <ul class="flex lg:space-x-3 font-medium">
                         @if (isLogin == true) {
                         <li>
@@ -48,6 +48,10 @@
                             </div>
                             <a routerLink="wishlist" routerLinkActive="bg-main text-white"
                                 class="px-3 py-2 rounded-md">Wishlist</a>
+                        </li>
+                        <li>
+                            <a routerLink="allorders" routerLinkActive="bg-main text-white"
+                                class="px-3 py-2 rounded-md">orders</a>
                         </li>
                         <li>
                             <a routerLink="products" routerLinkActive="bg-main text-white"
@@ -126,6 +130,8 @@
                 <span class="ml-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-sm text-white p-3">{{productCount}}</span></a>
             <a routerLink="wishlist" routerLinkActive="bg-main text-white"
                 class="block rounded-md px-3 py-2 text-base font-medium">Wishlist</a>
+                <a routerLink="allorders" routerLinkActive="bg-main text-white"
+                class="block rounded-md px-3 py-2 text-base font-medium">Orders</a>
             <a routerLink="products" routerLinkActive="bg-main text-white"
                 class="block rounded-md px-3 py-2 text-base font-medium">Products</a>
             <a routerLink="categories" routerLinkActive="bg-main text-white"
