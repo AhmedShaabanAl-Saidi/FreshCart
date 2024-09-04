@@ -19,6 +19,10 @@ export class AllordersComponent implements OnInit {
   constructor(private _OrderService: OrderService) {}
 
   ngOnInit(): void {
+    if (typeof localStorage != 'undefined') {
+      localStorage.setItem('currentPage', '/allorders');
+    }
+
     this.getAllOrders();
   }
 

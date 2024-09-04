@@ -3,11 +3,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth/auth.service';
 import { FlowbiteService } from '../../../shared/services/flowbite/flowbite.service';
 import { CartService } from '../../../shared/services/cart/cart.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive,NgClass],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
@@ -17,6 +18,9 @@ export class NavbarComponent implements OnInit {
   userStatus!: string | null;
   userEmail!: string | null;
   productCount: number = 0;
+
+  isMobileMenuOpen = false;
+  isUserMenuOpen = false;
 
   constructor(
     public _AuthService: AuthService,
@@ -56,5 +60,13 @@ export class NavbarComponent implements OnInit {
         this.productCount = data;
       },
     });
+  }
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  toggleUserMenu() {
+    this.isUserMenuOpen = !this.isUserMenuOpen;
   }
 }

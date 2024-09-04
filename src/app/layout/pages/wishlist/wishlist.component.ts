@@ -25,7 +25,7 @@ export class WishlistComponent implements OnInit {
 
   ngOnInit(): void {
     if (typeof localStorage != 'undefined') {
-      localStorage.setItem('currentPage', '/cart');
+      localStorage.setItem('currentPage', '/wishlist');
     }
 
     this.getLoggedUserWishlist();
