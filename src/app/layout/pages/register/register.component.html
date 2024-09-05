@@ -149,8 +149,8 @@
                 }
             </div>
 
-            <div class="flex items-center justify-between mt-5">
-                <button [disabled]="registerForm.invalid" class="btn-main">
+            <div class="flex flex-col md:flex-row gap-3 mt-10 items-center md:justify-between md:mt-5">
+                <button [disabled]="registerForm.invalid" class="btn-main w-full md:w-auto">
                 @if (isLoading) {
                 <span><i class="fa fa-spin fa-spinner"></i></span>
                 }
@@ -159,7 +159,7 @@
                 }
             </button>
 
-            <p class="md:text-lg font-medium">already have an account? <a routerLink="/login" class="text-blue-500 cursor-pointer">Sign in</a></p>
+            <p class="text-lg font-medium">already have an account? <a routerLink="/login" class="text-blue-500 cursor-pointer">Sign in</a></p>
             </div>
             
         </form>
