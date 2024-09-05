@@ -71,7 +71,6 @@ export class AuthService {
     );
   }
 
-
   resetNewPassword(data: newPassword): Observable<SuccessResetPassword|FailResetPassword> {
     return this._HttpClient.put<SuccessResetPassword|FailResetPassword>(
       `${Environment.baseUrl}/api/v1/auth/resetPassword`,
