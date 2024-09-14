@@ -10,10 +10,6 @@ import { SuccessCheckOut } from '../../interfaces/success-check-out';
   providedIn: 'root',
 })
 export class OrderService {
-  userTokenHeader = {
-    token: localStorage.getItem('userToken') || '',
-  };
-
   constructor(private _HttpClient: HttpClient) {}
 
   checkOut(cardId: string, data: address) : Observable<SuccessCheckOut|FailCheckOut> {
@@ -21,9 +17,6 @@ export class OrderService {
       `${Environment.baseUrl}/api/v1/orders/checkout-session/${cardId}?url=${Environment.baseUrlWebSite}`,
       {
         shippingAddress: data,
-      },
-      {
-        headers: this.userTokenHeader,
       }
     );
   }
