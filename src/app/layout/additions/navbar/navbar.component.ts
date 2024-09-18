@@ -1,4 +1,4 @@
-import { afterNextRender, Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth/auth.service';
 import { FlowbiteService } from '../../../shared/services/flowbite/flowbite.service';
@@ -8,7 +8,7 @@ import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive,NgClass],
+  imports: [RouterLink, RouterLinkActive, NgClass],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     if (typeof localStorage !== 'undefined') {
       this.userName = localStorage.getItem('userName');
-      this.userStatus = localStorage.getItem('userState');
+      this.userStatus = localStorage.getItem('userStatus');
       this.userEmail = localStorage.getItem('userEmail');
     }
 
@@ -48,12 +48,15 @@ export class NavbarComponent implements OnInit {
       }
     });
 
-
-    this._CartService.getLoggedUserCart().subscribe({
-      next: (res) => {
-        this._CartService.cartNumber.next(res.numOfCartItems);
-      },
-    });
+    if (typeof localStorage !== 'undefined') {
+      if (localStorage.getItem('userToken')) {
+        this._CartService.getLoggedUserCart().subscribe({
+          next: (res) => {
+            this._CartService.cartNumber.next(res.numOfCartItems);
+          },
+        });
+      }
+    }
 
     this._CartService.cartNumber.subscribe({
       next: (data) => {
