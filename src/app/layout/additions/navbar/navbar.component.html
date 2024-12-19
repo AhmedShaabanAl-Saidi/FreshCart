@@ -29,14 +29,16 @@
                 </div>
                 <div class="hidden md:ml-6 md:block text-sm 2xl:text-lg">
                     <ul class="flex lg:space-x-3 font-medium">
-                        @if (isLogin == true) {
+
                         <li>
                             <a routerLink="home" routerLinkActive="bg-main text-white"
                                 class="px-3 py-2 rounded-md">Home</a>
                         </li>
+                        @if (isLogin == true) {
                         <li class="relative">
                             <div class="absolute -top-4 -right-3">
-                                <p class="flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-sm p-3 text-white">
+                                <p
+                                    class="flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-sm p-3 text-white">
                                     {{productCount}}</p>
                             </div>
                             <a routerLink="cart" routerLinkActive="bg-main text-white"
@@ -53,6 +55,7 @@
                             <a routerLink="allorders" routerLinkActive="bg-main text-white"
                                 class="px-3 py-2 rounded-md">orders</a>
                         </li>
+                        }
                         <li>
                             <a routerLink="products" routerLinkActive="bg-main text-white"
                                 class="px-3 py-2 rounded-md">Products</a>
@@ -65,7 +68,6 @@
                             <a routerLink="brands" routerLinkActive="bg-main text-white"
                                 class="px-3 py-2 rounded-md">Brands</a>
                         </li>
-                        }
                     </ul>
                 </div>
             </div>
@@ -87,8 +89,10 @@
                         <div class="px-4 py-3">
                             @if (isLogin == true) {
                             <div class="flex items-center justify-between mb-2">
-                                <span class="block text-lg font-medium text-gray-900 dark:text-white">{{userName}}</span>
-                                <span class="inline-block text-xs font-medium text-white p-1 rounded bg-main">{{userStatus}}</span>
+                                <span
+                                    class="block text-lg font-medium text-gray-900 dark:text-white">{{userName}}</span>
+                                <span
+                                    class="inline-block text-xs font-medium text-white p-1 rounded bg-main">{{userStatus}}</span>
                             </div>
                             <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{userEmail}}</span>
                             }
@@ -121,24 +125,25 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="md:hidden" id="mobile-menu" [ngClass]="{'block': isMobileMenuOpen, 'hidden': !isMobileMenuOpen}">
         <div class="space-y-1 px-2 pb-3 pt-2">
-            @if (isLogin == true) {
             <a routerLink="home" routerLinkActive="bg-main text-white"
                 class="block rounded-md px-3 py-2 text-base font-medium">Home</a>
-                <a routerLink="cart" routerLinkActive="bg-main text-white"
+            @if (isLogin == true) {
+            <a routerLink="cart" routerLinkActive="bg-main text-white"
                 class="rounded-md px-3 py-2 text-base font-medium flex items-center">
                 <span>Cart</span>
-                <span class="ml-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-sm text-white p-3">{{productCount}}</span></a>
+                <span
+                    class="ml-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-sm text-white p-3">{{productCount}}</span></a>
             <a routerLink="wishlist" routerLinkActive="bg-main text-white"
                 class="block rounded-md px-3 py-2 text-base font-medium">Wishlist</a>
-                <a routerLink="allorders" routerLinkActive="bg-main text-white"
+            <a routerLink="allorders" routerLinkActive="bg-main text-white"
                 class="block rounded-md px-3 py-2 text-base font-medium">Orders</a>
+            }
             <a routerLink="products" routerLinkActive="bg-main text-white"
                 class="block rounded-md px-3 py-2 text-base font-medium">Products</a>
             <a routerLink="categories" routerLinkActive="bg-main text-white"
                 class="block rounded-md px-3 py-2 text-base font-medium">Categories</a>
             <a routerLink="brands" routerLinkActive="bg-main text-white"
                 class="block rounded-md px-3 py-2 text-base font-medium">Brands</a>
-            }
         </div>
     </div>
 </nav>

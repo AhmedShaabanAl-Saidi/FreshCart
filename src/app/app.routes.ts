@@ -16,17 +16,17 @@ import { WishlistComponent } from './layout/pages/wishlist/wishlist.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent,canActivate :[authGuard] },
+  { path: 'home', component: HomeComponent},
   { path: 'cart', component: CartComponent,canActivate :[authGuard] },
   { path: 'wishlist', component: WishlistComponent,canActivate :[authGuard] },
-  { path: 'products', component: ProductsComponent ,canActivate :[authGuard]},
-  { path: 'brands', component: BrandsComponent ,canActivate :[authGuard]},
-  { path: 'categories', component: CategoriesComponent ,canActivate :[authGuard]},
+  { path: 'products', component: ProductsComponent},
+  { path: 'brands', component: BrandsComponent},
+  { path: 'categories', component: CategoriesComponent},
   { path: 'shippingaddress/:cartId', component: ShippingAddressComponent ,canActivate :[authGuard]},
   { path: 'allorders', component: AllordersComponent ,canActivate :[authGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgetpassword', component: ForgetpasswordComponent },
-  { path: 'productDetails/:id', component: ProductDetailsComponent ,canActivate :[authGuard]}, //params
-  { path: '**', component: NotfoundComponent },
+  { path: 'productDetails/:id', component: ProductDetailsComponent}, //params
+  { path: '**', component: NotfoundComponent},
 ];
