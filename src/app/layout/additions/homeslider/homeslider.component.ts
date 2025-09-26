@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
-  selector: 'app-homeslider',
-  standalone: true,
-  imports: [CarouselModule],
-  templateUrl: './homeslider.component.html',
-  styleUrl: './homeslider.component.scss',
+    selector: 'app-homeslider',
+    imports: [CarouselModule],
+    templateUrl: './homeslider.component.html',
+    styleUrl: './homeslider.component.scss'
 })
 export class HomesliderComponent {
   customOptions: OwlOptions = {

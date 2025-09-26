@@ -5,11 +5,10 @@ import { CartService } from '../../../shared/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-wishlist',
-  standalone: true,
-  imports: [],
-  templateUrl: './wishlist.component.html',
-  styleUrl: './wishlist.component.scss',
+    selector: 'app-wishlist',
+    imports: [],
+    templateUrl: './wishlist.component.html',
+    styleUrl: './wishlist.component.scss'
 })
 export class WishlistComponent implements OnInit {
   data: Data[] = [];

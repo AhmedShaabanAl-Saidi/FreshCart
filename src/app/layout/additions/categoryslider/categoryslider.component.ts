@@ -4,11 +4,10 @@ import { category } from '../../../shared/interfaces/category';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
-  selector: 'app-categoryslider',
-  standalone: true,
-  imports: [CarouselModule],
-  templateUrl: './categoryslider.component.html',
-  styleUrl: './categoryslider.component.scss',
+    selector: 'app-categoryslider',
+    imports: [CarouselModule],
+    templateUrl: './categoryslider.component.html',
+    styleUrl: './categoryslider.component.scss'
 })
 export class CategorysliderComponent implements OnInit {
   customOptions: OwlOptions = {

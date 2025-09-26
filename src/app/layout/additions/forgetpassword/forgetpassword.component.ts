@@ -9,11 +9,10 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-forgetpassword',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './forgetpassword.component.html',
-  styleUrl: './forgetpassword.component.scss',
+    selector: 'app-forgetpassword',
+    imports: [ReactiveFormsModule],
+    templateUrl: './forgetpassword.component.html',
+    styleUrl: './forgetpassword.component.scss'
 })
 export class ForgetpasswordComponent {
   isLoading: boolean = false;

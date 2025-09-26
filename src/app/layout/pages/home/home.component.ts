@@ -4,11 +4,10 @@ import { HomesliderComponent } from '../../additions/homeslider/homeslider.compo
 import { ProductsComponent } from '../products/products.component';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CategorysliderComponent, HomesliderComponent, ProductsComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+    selector: 'app-home',
+    imports: [CategorysliderComponent, HomesliderComponent, ProductsComponent],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
   ngOnInit(): void {

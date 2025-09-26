@@ -6,11 +6,10 @@ import { CartService } from '../../../shared/services/cart/cart.service';
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [RouterLink, RouterLinkActive, NgClass],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+    selector: 'app-navbar',
+    imports: [RouterLink, RouterLinkActive, NgClass],
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
   isLogin: boolean = false;

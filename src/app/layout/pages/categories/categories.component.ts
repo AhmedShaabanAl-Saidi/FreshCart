@@ -3,11 +3,10 @@ import { CatgeoryService } from '../../../shared/services/catgeory/catgeory.serv
 import { category } from '../../../shared/interfaces/category';
 
 @Component({
-  selector: 'app-categories',
-  standalone: true,
-  imports: [],
-  templateUrl: './categories.component.html',
-  styleUrl: './categories.component.scss'
+    selector: 'app-categories',
+    imports: [],
+    templateUrl: './categories.component.html',
+    styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent implements OnInit{
   categoryList!: category[];

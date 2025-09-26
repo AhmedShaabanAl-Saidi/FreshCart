@@ -4,11 +4,10 @@ import { SuccessAllorders } from '../../../shared/interfaces/success-allorders';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-allorders',
-  standalone: true,
-  imports: [DatePipe],
-  templateUrl: './allorders.component.html',
-  styleUrl: './allorders.component.scss',
+    selector: 'app-allorders',
+    imports: [DatePipe],
+    templateUrl: './allorders.component.html',
+    styleUrl: './allorders.component.scss'
 })
 export class AllordersComponent implements OnInit {
   userId = localStorage.getItem('userId')!;

@@ -7,11 +7,10 @@ import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../../../shared/services/cart/cart.service';
 
 @Component({
-  selector: 'app-product-details',
-  standalone: true,
-  imports: [CarouselModule],
-  templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.scss',
+    selector: 'app-product-details',
+    imports: [CarouselModule],
+    templateUrl: './product-details.component.html',
+    styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent implements OnInit {
   product!: product;

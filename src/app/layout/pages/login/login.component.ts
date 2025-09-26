@@ -8,11 +8,10 @@ import {
 import { AuthService } from '../../../shared/services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [ReactiveFormsModule,RouterLink],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+    selector: 'app-login',
+    imports: [ReactiveFormsModule, RouterLink],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   errMsg!: string;

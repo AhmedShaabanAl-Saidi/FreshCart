@@ -9,11 +9,10 @@ import { SearchPipe } from '../../../shared/pipes/search.pipe';
 import { WishlistService } from '../../../shared/services/wishlist/wishlist.service';
 
 @Component({
-  selector: 'app-products',
-  standalone: true,
-  imports: [RouterLink, SearchPipe, FormsModule],
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.scss',
+    selector: 'app-products',
+    imports: [RouterLink, SearchPipe, FormsModule],
+    templateUrl: './products.component.html',
+    styleUrl: './products.component.scss'
 })
 export class ProductsComponent implements OnInit {
   productList!: product[];

@@ -4,11 +4,10 @@ import { Data } from '../../../shared/interfaces/cart';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 @Component({
-  selector: 'app-cart',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.scss',
+    selector: 'app-cart',
+    imports: [RouterLink],
+    templateUrl: './cart.component.html',
+    styleUrl: './cart.component.scss'
 })
 export class CartComponent implements OnInit {
   data!: Data;
